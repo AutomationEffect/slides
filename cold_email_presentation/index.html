@@ -49,16 +49,18 @@
 
     <!-- Presentation Mode Overlay -->
     <div id="presentation-overlay" class="fixed inset-0 bg-black z-50 hidden" style="z-index: 999999;">
-        <div class="h-screen w-screen flex items-center justify-center overflow-hidden">
-            <iframe id="presentation-frame" class="border-none" src="" style="width: 100vw; height: 100vh; border: none; margin: 0; padding: 0;"></iframe>
+        <div class="h-screen w-screen flex items-center justify-center overflow-hidden relative">
+            <div id="presentation-slide-container" class="bg-black flex items-center justify-center" style="width: 100vw; height: 100vh;">
+                <iframe id="presentation-frame" class="border-none" src="" style="border: none; margin: 0; padding: 0; transform-origin: center center;"></iframe>
+            </div>
         </div>
 
-        <div id="slide-counter" class="absolute top-4 right-4 bg-black bg-opacity-70 rounded-lg px-3 py-1 text-white text-sm opacity-80 hover:opacity-100 transition-opacity">
+        <div id="slide-counter" class="absolute top-4 right-4 bg-black bg-opacity-70 rounded-lg px-3 py-1 text-white text-sm opacity-80 hover:opacity-100 transition-opacity z-10">
             1 / 22
         </div>
 
-        <div id="presentation-controls" class="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-70 rounded-lg px-4 py-2 text-white text-sm opacity-0 hover:opacity-100 transition-opacity duration-300">
-            Press <kbd class="bg-gray-700 px-2 py-1 rounded">←</kbd> / <kbd class="bg-gray-700 px-2 py-1 rounded">→</kbd> to navigate • <kbd class="bg-gray-700 px-2 py-1 rounded">→</kbd> to navigate • <kbd class="bg-gray-700 px-2 py-1 rounded">Esc</kbd> to exit • <kbd class="bg-gray-700 px-2 py-1 rounded">F11</kbd> for browser fullscreen
+        <div id="presentation-controls" class="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-70 rounded-lg px-4 py-2 text-white text-sm opacity-0 hover:opacity-100 transition-opacity duration-300 z-10">
+            Press <kbd class="bg-gray-700 px-2 py-1 rounded">←</kbd> / <kbd class="bg-gray-700 px-2 py-1 rounded">→</kbd> to navigate • <kbd class="bg-gray-700 px-2 py-1 rounded">Esc</kbd> to exit • <kbd class="bg-gray-700 px-2 py-1 rounded">F</kbd> for fullscreen
         </div>
     </div>
 
@@ -122,12 +124,50 @@
             slideCounter.textContent = `${currentSlideIndex + 1} / ${slides.length}`;
         }
 
+        function scaleSlideToFit() {
+            const iframe = presentationFrame;
+            const container = document.getElementById('presentation-slide-container');
+            
+            if (!iframe || !container) return;
+            
+            const containerWidth = window.innerWidth;
+            const containerHeight = window.innerHeight;
+            
+            // Slide dimensions (16:9 aspect ratio)
+            const slideWidth = 1280;
+            const slideHeight = 720;
+            
+            // Calculate scale to fit screen while maintaining aspect ratio
+            const scaleX = containerWidth / slideWidth;
+            const scaleY = containerHeight / slideHeight;
+            const scale = Math.min(scaleX, scaleY);
+            
+            // Apply scaling
+            iframe.style.width = slideWidth + 'px';
+            iframe.style.height = slideHeight + 'px';
+            iframe.style.transform = `scale(${scale})`;
+        }
+
         function enterPresentationMode() {
             isPresentationMode = true;
             presentationOverlay.classList.remove('hidden');
             presentationFrame.src = slides[currentSlideIndex];
             document.body.style.overflow = 'hidden';
             presentationButton.textContent = '📺 Exit Presentation';
+            
+            // Try to enter browser fullscreen
+            if (presentationOverlay.requestFullscreen) {
+                presentationOverlay.requestFullscreen().catch(() => {
+                    // Fullscreen failed, but continue with presentation mode
+                });
+            } else if (presentationOverlay.webkitRequestFullscreen) {
+                presentationOverlay.webkitRequestFullscreen();
+            } else if (presentationOverlay.msRequestFullscreen) {
+                presentationOverlay.msRequestFullscreen();
+            }
+            
+            // Scale the slide to fit
+            setTimeout(scaleSlideToFit, 100);
         }
 
         function exitPresentationMode() {
@@ -135,6 +175,17 @@
             presentationOverlay.classList.add('hidden');
             document.body.style.overflow = 'auto';
             presentationButton.textContent = '📺 Presentation Mode';
+            
+            // Exit fullscreen if active
+            if (document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
+            }
         }
 
         slides.forEach((slide, index) => {
@@ -179,10 +230,36 @@
                 if (currentSlideIndex < slides.length - 1) {
                     loadSlide(currentSlideIndex + 1);
                 }
-            } else if (e.key === 'f' || e.key === 'F') {
+            } else if ((e.key === 'f' || e.key === 'F') && !e.ctrlKey && !e.metaKey) {
                 if (!isPresentationMode) {
                     enterPresentationMode();
                 }
+            }
+        });
+
+        // Handle fullscreen changes
+        document.addEventListener('fullscreenchange', () => {
+            if (!document.fullscreenElement && isPresentationMode) {
+                // If fullscreen was exited externally, also exit presentation mode
+                setTimeout(() => {
+                    if (!document.fullscreenElement) {
+                        exitPresentationMode();
+                    }
+                }, 100);
+            }
+        });
+
+        // Handle window resize in presentation mode
+        window.addEventListener('resize', () => {
+            if (isPresentationMode) {
+                setTimeout(scaleSlideToFit, 100);
+            }
+        });
+
+        // Handle iframe load to scale slide
+        presentationFrame.addEventListener('load', () => {
+            if (isPresentationMode) {
+                setTimeout(scaleSlideToFit, 100);
             }
         });
 
