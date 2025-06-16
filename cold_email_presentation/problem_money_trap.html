@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The 'Throw Money At It' Trap</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #334155 50%, #475569 75%, #64748b 100%);
+            font-family: 'Montserrat', sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .trap-highlight {
+            background: linear-gradient(135deg, #ec4899 0%, #be185d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(236, 72, 153, 0.5);
+        }
+        
+        .cost-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: slideInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        
+        .cost-card:nth-child(1) { animation-delay: 0.2s; }
+        .cost-card:nth-child(2) { animation-delay: 0.4s; }
+        .cost-card:nth-child(3) { animation-delay: 0.6s; }
+        
+        .cost-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .chart-container {
+            position: relative;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            padding: 25px;
+            animation: slideInRight 0.8s ease-out 0.8s forwards;
+            opacity: 0;
+            transform: translateX(50px);
+            width: 100%;
+            height: 100%;
+        }
+        
+        .magnified-circle {
+            position: absolute;
+            width: 140px;
+            height: 140px;
+            border: 5px solid #ec4899;
+            border-radius: 50%;
+            background: rgba(236, 72, 153, 0.15);
+            backdrop-filter: blur(10px);
+            animation: magnifyPulse 2s ease-in-out infinite;
+            z-index: 10;
+            box-shadow: 0 0 30px rgba(236, 72, 153, 0.5);
+        }
+        
+        .magnified-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #ec4899;
+            font-weight: bold;
+        }
+        
+        .callout-arrow {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 22px solid transparent;
+            border-right: 22px solid transparent;
+            border-top: 30px solid #ec4899;
+            animation: bounce 2s ease-in-out infinite;
+        }
+        
+        .callout-text {
+            position: absolute;
+            background: linear-gradient(135deg, #ec4899 0%, #9333ea 100%);
+            color: white;
+            padding: 15px 22px;
+            border-radius: 15px;
+            font-size: 16px;
+            font-weight: bold;
+            white-space: nowrap;
+            animation: bounce 2s ease-in-out infinite;
+            box-shadow: 0 8px 25px rgba(236, 72, 153, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        @keyframes magnifyPulse {
+            0%, 100% { transform: scale(1); opacity: 0.9; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        @keyframes slideInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container relative">
+        <div class="relative z-10 h-full flex flex-col justify-center p-8">
+            <!-- Title with proper spacing -->
+            <div class="text-center mb-8">
+                <h1 class="trap-highlight text-3xl font-black mb-3">The "Throw Money At It" Trap</h1>
+                <p class="text-lg text-gray-300 font-semibold">High costs, poor targeting, algorithm dependency</p>
+            </div>
+
+            <!-- Main Content: Left boxes moved left, chart 2x wider -->
+            <div class="flex gap-6 w-full">
+                <!-- Left Side: Cost Problems (moved further left, smaller width) -->
+                <div class="w-64 ml-4 space-y-5">
+                    <div class="cost-card rounded-xl p-5 shadow-lg border-l-4 border-red-500">
+                        <div class="flex items-center mb-3">
+                            <i class="fas fa-dollar-sign text-2xl text-red-500 mr-3"></i>
+                            <div>
+                                <h3 class="text-lg font-bold text-white">Google Ads</h3>
+                                <p class="text-gray-300 text-sm">$42+ per qualified lead</p>
+                            </div>
+                        </div>
+                        <div class="bg-red-500 text-white rounded-lg p-3">
+                            <p class="font-semibold text-center text-sm">420x more expensive</p>
+                        </div>
+                    </div>
+
+                    <div class="cost-card rounded-xl p-5 shadow-lg border-l-4 border-gray-800">
+                        <div class="flex items-center mb-3">
+                            <i class="fab fa-linkedin text-2xl text-gray-800 mr-3"></i>
+                            <div>
+                                <h3 class="text-lg font-bold text-white">LinkedIn Ads</h3>
+                                <p class="text-gray-300 text-sm">$35+ per qualified lead</p>
+                            </div>
+                        </div>
+                        <div class="bg-gray-800 text-white rounded-lg p-3">
+                            <p class="font-semibold text-center text-sm">350x more expensive</p>
+                        </div>
+                    </div>
+
+                    <div class="cost-card rounded-xl p-5 shadow-lg border-l-4 border-blue-500">
+                        <div class="flex items-center mb-3">
+                            <i class="fab fa-facebook text-2xl text-blue-500 mr-3"></i>
+                            <div>
+                                <h3 class="text-lg font-bold text-white">Facebook Ads</h3>
+                                <p class="text-gray-300 text-sm">$25+ per qualified lead</p>
+                            </div>
+                        </div>
+                        <div class="bg-blue-500 text-white rounded-lg p-3">
+                            <p class="font-semibold text-center text-sm">250x more expensive</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Side: Much Wider Chart (2x width) -->
+                <div class="flex-1 mr-4">
+                    <div class="chart-container relative">
+                        <h3 class="text-xl font-bold text-gray-800 mb-5 text-center">Cost Per Qualified Lead</h3>
+                        <div style="height: 350px; position: relative;">
+                            <canvas id="costChart"></canvas>
+                            
+                            <!-- Magnified Circle over Cold Email bar (moved down) -->
+                            <div class="magnified-circle" style="bottom: 30px; left: 80px;">
+                                <div class="magnified-content">
+                                    <div class="text-sm">Cold Email</div>
+                                    <div class="text-xl font-black">$0.10</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Larger Callout Arrow and Text (150% bigger) -->
+                            <div class="callout-arrow" style="bottom: 190px; left: 135px;"></div>
+                            <div class="callout-text" style="bottom: 225px; left: 55px;">
+                                So tiny it needs magnification!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Bottom Accent -->
+        <div class="absolute bottom-0 left-0 w-full h-2 bg-gradient-to-r from-pink-500 via-purple-600 to-blue-500"></div>
+    </div>
+
+    <script>
+        // Wait for page load
+        window.addEventListener('load', function() {
+            const ctx = document.getElementById('costChart').getContext('2d');
+            
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Cold Email', 'Facebook Ads', 'LinkedIn Ads', 'Google Ads'],
+                    datasets: [{
+                        label: 'Cost per Lead ($)',
+                        data: [0.10, 25, 35, 42],
+                        backgroundColor: [
+                            'rgba(34, 197, 94, 0.8)',    // Green for Cold Email
+                            'rgba(59, 130, 246, 0.8)',   // Blue for Facebook (matches card)
+                            'rgba(55, 65, 81, 0.8)',     // Dark charcoal for LinkedIn (matches card)
+                            'rgba(239, 68, 68, 0.8)'     // Red for Google (matches card)
+                        ],
+                        borderColor: [
+                            'rgba(34, 197, 94, 1)',      // Green for Cold Email
+                            'rgba(59, 130, 246, 1)',     // Blue for Facebook
+                            'rgba(55, 65, 81, 1)',       // Dark charcoal for LinkedIn
+                            'rgba(239, 68, 68, 1)'       // Red for Google
+                        ],
+                        borderWidth: 3,
+                        borderRadius: 10
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 45,
+                            ticks: {
+                                callback: function(value) {
+                                    return '$' + value;
+                                },
+                                color: '#374151',
+                                font: {
+                                    weight: 'bold',
+                                    size: 14
+                                }
+                            },
+                            grid: {
+                                color: 'rgba(156, 163, 175, 0.3)'
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                color: '#374151',
+                                font: {
+                                    weight: 'bold',
+                                    size: 14
+                                }
+                            },
+                            grid: {
+                                display: false
+                            }
+                        }
+                    },
+                    animation: {
+                        duration: 2000,
+                        easing: 'easeOutBounce'
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+

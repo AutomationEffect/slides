@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Giants Started Here</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+            font-family: 'Montserrat', sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .title-glow {
+            background: linear-gradient(135deg, #ec4899 0%, #be185d 50%, #9333ea 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(236, 72, 153, 0.5);
+        }
+        
+        .company-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: slideInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        
+        .company-card:nth-child(1) { animation-delay: 0.2s; }
+        .company-card:nth-child(2) { animation-delay: 0.4s; }
+        .company-card:nth-child(3) { animation-delay: 0.6s; }
+        .company-card:nth-child(4) { animation-delay: 0.8s; }
+        
+        .company-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+        
+        .logo-container {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .logo-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+            opacity: 0.3;
+            animation: logoGlow 2s ease-in-out infinite alternate;
+        }
+        
+        .salesforce-glow { background: radial-gradient(circle, #ec4899 0%, transparent 70%); }
+        .uber-glow { background: radial-gradient(circle, #9333ea 0%, transparent 70%); }
+        .airbnb-glow { background: radial-gradient(circle, #ec4899 0%, transparent 70%); }
+        .stripe-glow { background: radial-gradient(circle, #9333ea 0%, transparent 70%); }
+        
+        .valuation {
+            background: linear-gradient(135deg, #ec4899 0%, #9333ea 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        .floating-particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #ec4899;
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .particle:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+        .particle:nth-child(2) { top: 60%; left: 90%; animation-delay: 2s; }
+        .particle:nth-child(3) { top: 80%; left: 20%; animation-delay: 4s; }
+        .particle:nth-child(4) { top: 30%; left: 80%; animation-delay: 1s; }
+        .particle:nth-child(5) { top: 70%; left: 60%; animation-delay: 3s; }
+        
+        .quote-box {
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.9) 0%, rgba(147, 51, 234, 0.9) 100%);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: slideInUp 1s ease-out 1.2s forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        @keyframes slideInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes logoGlow {
+            0% { opacity: 0.2; transform: translate(-50%, -50%) scale(1); }
+            100% { opacity: 0.4; transform: translate(-50%, -50%) scale(1.1); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-20px) rotate(120deg); }
+            66% { transform: translateY(10px) rotate(240deg); }
+        }
+        
+        .company-logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: white;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container relative">
+        <!-- Floating Particles -->
+        <div class="floating-particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+        
+        <div class="relative z-10 h-full flex flex-col justify-center p-8">
+            <!-- Title -->
+            <div class="text-center mb-8">
+                <h1 class="title-glow text-4xl font-black mb-2">Tech Giants Started Here</h1>
+                <p class="text-xl text-gray-300 font-semibold">These aren't flukes—they're proof of a system</p>
+            </div>
+
+            <!-- Company Grid -->
+            <div class="grid grid-cols-2 gap-6 max-w-6xl mx-auto">
+                <!-- Salesforce -->
+                <div class="company-card rounded-xl p-6 shadow-2xl border-l-4 border-pink-500">
+                    <div class="flex items-center mb-4">
+                        <div class="logo-container w-16 h-16 bg-gradient-to-br from-pink-500 to-pink-600 rounded-xl flex items-center justify-center mr-4 relative">
+                            <div class="logo-glow salesforce-glow"></div>
+                            <span class="company-logo relative z-10">SF</span>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-800">Salesforce</h3>
+                            <p class="valuation text-lg font-bold">$247B valuation</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 text-sm leading-relaxed">Marc Benioff cold emailed prospects in 1999 to get first customers. Built to $31B revenue using outbound as core strategy.</p>
+                </div>
+
+                <!-- Uber -->
+                <div class="company-card rounded-xl p-6 shadow-2xl border-l-4 border-purple-500">
+                    <div class="flex items-center mb-4">
+                        <div class="logo-container w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center mr-4 relative">
+                            <div class="logo-glow uber-glow"></div>
+                            <span class="company-logo relative z-10">U</span>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-800">Uber</h3>
+                            <p class="valuation text-lg font-bold">Global expansion</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 text-sm leading-relaxed">Ryan Graves cold emailed Travis after seeing a tweet. Early teams cold emailed drivers and riders in new cities.</p>
+                </div>
+
+                <!-- Airbnb -->
+                <div class="company-card rounded-xl p-6 shadow-2xl border-l-4 border-pink-500">
+                    <div class="flex items-center mb-4">
+                        <div class="logo-container w-16 h-16 bg-gradient-to-br from-pink-500 to-pink-600 rounded-xl flex items-center justify-center mr-4 relative">
+                            <div class="logo-glow airbnb-glow"></div>
+                            <span class="company-logo relative z-10">A</span>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-800">Airbnb</h3>
+                            <p class="valuation text-lg font-bold">$75B valuation</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 text-sm leading-relaxed">Brian Chesky cold emailed users from Craigslist. Manually recruited hosts through direct outreach.</p>
+                </div>
+
+                <!-- Stripe -->
+                <div class="company-card rounded-xl p-6 shadow-2xl border-l-4 border-purple-500">
+                    <div class="flex items-center mb-4">
+                        <div class="logo-container w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center mr-4 relative">
+                            <div class="logo-glow stripe-glow"></div>
+                            <span class="company-logo relative z-10">S</span>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-800">Stripe</h3>
+                            <p class="valuation text-lg font-bold">$95B valuation</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 text-sm leading-relaxed">Collison brothers personally cold emailed developers. Patrick would install Stripe for prospects during calls.</p>
+                </div>
+            </div>
+
+            <!-- Bottom Quote -->
+            <div class="text-center mt-6">
+                <div class="quote-box text-white rounded-xl p-4 max-w-3xl mx-auto shadow-2xl">
+                    <p class="text-lg font-bold">"These companies didn't wait for customers—they built pipelines."</p>
+                    <p class="text-sm mt-1 opacity-90">Can you imagine your business on this list?</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Bottom Accent -->
+        <div class="absolute bottom-0 left-0 w-full h-2 bg-gradient-to-r from-pink-500 via-purple-600 to-blue-500"></div>
+    </div>
+</body>
+</html>
+

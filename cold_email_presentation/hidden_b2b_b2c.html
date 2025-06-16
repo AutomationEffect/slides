@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Hidden B2B in B2C</title>
+
+  <!-- Tailwind CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome (for the light-bulb icon) -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+
+  <style>
+    /* ───────── 1. Lock the canvas to 1280×720 (16:9) ───────── */
+    .slide-container {
+      width: 1280px;
+      height: 720px;
+      position: relative;
+      overflow: hidden;
+      font-family: "Montserrat", sans-serif;
+      background: linear-gradient(
+        135deg,
+        #0f172a 0%,
+        #1e293b 25%,
+        #334155 50%,
+        #475569 75%,
+        #64748b 100%
+      );
+    }
+
+    /* ───────── 2. Auto-scale the payload if it ever overflows ───────── */
+    .slide-inner {
+      position: absolute;
+      inset: 0;
+      padding: 1.25rem 2rem; /* compact top/bottom padding */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      box-sizing: border-box;
+      transform-origin: top center;
+    }
+    /* If real height > 720px → shrink to fit */
+    @supports (aspect-ratio: 1) {
+      .slide-inner {
+        --real-h: 650; /* <<< measured content height; update if you add more stuff */
+        --scale: calc(720 / max(720, var(--real-h)));
+        transform: scale(var(--scale));
+      }
+    }
+
+    /* ───────── 3. Visual tweaks so everything fits ───────── */
+    .b2c-highlight {
+      background: linear-gradient(135deg, #ec4899 0%, #9333ea 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-size: 2.5rem;      /* ~40 px */
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+    }
+
+    .lead {
+      font-size: 1.125rem;    /* ~18 px */
+      font-weight: 600;
+      color: #d1d5db;
+      margin-bottom: 1.25rem;
+      text-align: center;
+    }
+
+    .grid-wrap {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+      width: 100%;
+      max-width: 960px;
+    }
+
+    .company-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 0.75rem;
+      padding: 1rem;
+      min-height: 155px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .company-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.35);
+    }
+
+    .logo {
+      width: 42px;
+      height: 42px;
+      font-size: 1.1rem;
+      font-weight: 900;
+      color: #fff;
+      border-radius: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-right: 0.75rem;
+    }
+
+    .badge {
+      background: linear-gradient(
+        135deg,
+        rgba(236, 72, 153, 0.9) 0%,
+        rgba(147, 51, 234, 0.9) 100%
+      );
+      border-radius: 0.5rem;
+      padding: 0.35rem 0.5rem;
+      font-size: 0.83rem;
+      font-weight: 700;
+      text-align: center;
+      color: #ffffff;
+      margin-top: 0.5rem;
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.2;
+    }
+    .card-sub {
+      font-size: 0.875rem;
+      color: #d1d5db;
+    }
+    .card-copy {
+      font-size: 0.83rem;
+      color: #d1d5db;
+      margin-top: 0.35rem;
+    }
+
+    .insight {
+      background: linear-gradient(
+        135deg,
+        rgba(59, 130, 246, 0.9) 0%,
+        rgba(147, 51, 234, 0.9) 100%
+      );
+      border-radius: 0.75rem;
+      padding: 1rem;
+      max-width: 720px;
+      text-align: center;
+      color: #ffffff;
+    }
+    .insight h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+    .insight p {
+      font-size: 0.95rem;
+    }
+
+    /* bottom accent bar */
+    .accent {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background: linear-gradient(to right, #ec4899, #9333ea, #3b82f6);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="slide-container">
+    <div class="slide-inner">
+
+      <!-- ───────── Title ───────── -->
+      <h1 class="b2c-highlight">The Hidden B2B in B2C</h1>
+      <p class="lead">Consumer brands secretly dominating B2B with cold email</p>
+
+      <!-- ───────── 4 Cards ───────── -->
+      <div class="grid-wrap">
+
+        <!-- Spotify -->
+        <div class="company-card">
+          <div class="flex items-start">
+            <div class="logo" style="background:#1db954">S</div>
+            <div>
+              <div class="card-title">Spotify</div>
+              <div class="card-sub">Music Streaming Platform</div>
+              <div class="badge">Spotify&nbsp;for&nbsp;Business</div>
+            </div>
+          </div>
+          <div class="card-copy">Licenses background music to gyms, restaurants, and retail chains via cold email outreach.</div>
+        </div>
+
+        <!-- Uber -->
+        <div class="company-card">
+          <div class="flex items-start">
+            <div class="logo" style="background:#000000">U</div>
+            <div>
+              <div class="card-title">Uber</div>
+              <div class="card-sub">Ride-sharing Platform</div>
+              <div class="badge">Uber&nbsp;for&nbsp;Business</div>
+            </div>
+          </div>
+          <div class="card-copy">Emails HR and finance teams to secure corporate travel accounts and employee ride programs.</div>
+        </div>
+
+        <!-- Amazon -->
+        <div class="company-card">
+          <div class="flex items-start">
+            <div class="logo" style="background:#ff9500">A</div>
+            <div>
+              <div class="card-title">Amazon</div>
+              <div class="card-sub">E-commerce Giant</div>
+              <div class="badge">Amazon&nbsp;Business</div>
+            </div>
+          </div>
+          <div class="card-copy">Cold outreach to procurement and facilities teams for bulk purchasing and supplies.</div>
+        </div>
+
+        <!-- Airbnb -->
+        <div class="company-card">
+          <div class="flex items-start">
+            <div class="logo" style="background:#ff6b6b">A</div>
+            <div>
+              <div class="card-title">Airbnb</div>
+              <div class="card-sub">Home Sharing Platform</div>
+              <div class="badge">Airbnb&nbsp;for&nbsp;Work</div>
+            </div>
+          </div>
+          <div class="card-copy">Emails travel managers and HR leaders offering corporate accommodation solutions.</div>
+        </div>
+
+      </div>
+
+      <!-- ───────── Key Insight ───────── -->
+      <div class="insight">
+        <i class="fas fa-lightbulb text-yellow-400 text-xl"></i>
+        <h3>The Pattern Is Clear</h3>
+        <p>Every leading consumer brand hides a B2B arm powered by cold email. If it works for them, it works for you.</p>
+      </div>
+
+    </div>
+    <div class="accent"></div>
+  </div>
+</body>
+</html>
+

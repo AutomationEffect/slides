@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smaller Companies, Big Results</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #334155 50%, #475569 75%, #64748b 100%);
+            font-family: 'Montserrat', sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .results-highlight {
+            background: linear-gradient(135deg, #ec4899 0%, #be185d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(236, 72, 153, 0.5);
+        }
+        
+        .company-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: slideInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        
+        .company-card:nth-child(1) { animation-delay: 0.2s; }
+        .company-card:nth-child(2) { animation-delay: 0.4s; }
+        .company-card:nth-child(3) { animation-delay: 0.6s; }
+        .company-card:nth-child(4) { animation-delay: 0.8s; }
+        
+        .company-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .revenue-highlight {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 900;
+        }
+        
+        .company-logo {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #ec4899 0%, #9333ea 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.25rem;
+            font-weight: bold;
+            animation: logoGlow 2s ease-in-out infinite;
+        }
+        
+        .success-metric {
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.9) 0%, rgba(147, 51, 234, 0.9) 100%);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: slideInUp 1s ease-out 1s forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        @keyframes logoGlow {
+            0%, 100% { box-shadow: 0 0 15px rgba(236, 72, 153, 0.3); }
+            50% { box-shadow: 0 0 25px rgba(236, 72, 153, 0.6); }
+        }
+        
+        @keyframes slideInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .floating-icon {
+            position: absolute;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .floating-icon:nth-child(1) { top: 8%; right: 8%; animation-delay: 0s; }
+        .floating-icon:nth-child(2) { top: 15%; left: 5%; animation-delay: 1s; }
+        .floating-icon:nth-child(3) { bottom: 25%; right: 5%; animation-delay: 2s; }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(3deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container relative">
+        <!-- Floating Icons -->
+        <div class="floating-icon">
+            <i class="fas fa-seedling text-2xl text-pink-500 opacity-20"></i>
+        </div>
+        <div class="floating-icon">
+            <i class="fas fa-rocket text-2xl text-purple-500 opacity-20"></i>
+        </div>
+        <div class="floating-icon">
+            <i class="fas fa-gem text-2xl text-blue-500 opacity-20"></i>
+        </div>
+        
+        <div class="relative z-10 h-full flex flex-col justify-center p-12">
+            <!-- Title -->
+            <div class="text-center mb-10">
+                <h1 class="results-highlight text-3xl font-black mb-2">Smaller Companies, Big Results</h1>
+                <p class="text-lg text-gray-300 font-semibold">How cold email built multi-million dollar businesses</p>
+            </div>
+
+            <!-- Company Cards Grid -->
+            <div class="grid grid-cols-2 gap-4 max-w-4xl mx-auto mb-8">
+                <div class="company-card rounded-xl p-4 shadow-lg border-l-4 border-pink-500">
+                    <div class="flex items-center mb-3">
+                        <div class="company-logo mr-3">C</div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white">Close.io</h3>
+                            <p class="revenue-highlight text-base">$20M+ ARR</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 text-xs mb-2">CRM platform that grew by cold emailing sales teams about better sales tools.</p>
+                    <div class="bg-gradient-to-r from-pink-500/20 to-purple-600/20 rounded-lg p-2">
+                        <p class="text-white font-semibold text-center text-xs">Meta: Selling sales tools via sales</p>
+                    </div>
+                </div>
+
+                <div class="company-card rounded-xl p-4 shadow-lg border-l-4 border-purple-500">
+                    <div class="flex items-center mb-3">
+                        <div class="company-logo mr-3" style="background: linear-gradient(135deg, #9333ea 0%, #3b82f6 100%);">P</div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white">Predictable Revenue</h3>
+                            <p class="revenue-highlight text-base">$100M+ generated</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 text-xs mb-2">Aaron Ross's consulting firm that taught cold email to hundreds of companies.</p>
+                    <div class="bg-gradient-to-r from-purple-500/20 to-blue-600/20 rounded-lg p-2">
+                        <p class="text-white font-semibold text-center text-xs">The cold email blueprint</p>
+                    </div>
+                </div>
+
+                <div class="company-card rounded-xl p-4 shadow-lg border-l-4 border-blue-500">
+                    <div class="flex items-center mb-3">
+                        <div class="company-logo mr-3" style="background: linear-gradient(135deg, #3b82f6 0%, #10b981 100%);">L</div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white">LeadFuze</h3>
+                            <p class="revenue-highlight text-base">$5M+ ARR</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 text-xs mb-2">Lead generation platform that scaled by cold emailing marketing directors.</p>
+                    <div class="bg-gradient-to-r from-blue-500/20 to-green-600/20 rounded-lg p-2">
+                        <p class="text-white font-semibold text-center text-xs">Bootstrapped to millions</p>
+                    </div>
+                </div>
+
+                <div class="company-card rounded-xl p-4 shadow-lg border-l-4 border-green-500">
+                    <div class="flex items-center mb-3">
+                        <div class="company-logo mr-3" style="background: linear-gradient(135deg, #10b981 0%, #ec4899 100%);">W</div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white">Woodpecker</h3>
+                            <p class="revenue-highlight text-base">$3M+ ARR</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 text-xs mb-2">Cold email automation tool that grew by using their own platform for outreach.</p>
+                    <div class="bg-gradient-to-r from-green-500/20 to-pink-600/20 rounded-lg p-2">
+                        <p class="text-white font-semibold text-center text-xs">Eating their own dog food</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Success Metric -->
+            <div class="text-center">
+                <div class="success-metric text-white rounded-xl p-4 max-w-3xl mx-auto shadow-2xl">
+                    <p class="text-lg font-bold mb-1">Combined revenue: $130M+. All bootstrapped with cold email.</p>
+                    <p class="text-sm opacity-90">Proof that you don't need venture capital—just the right outreach strategy.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Bottom Accent -->
+        <div class="absolute bottom-0 left-0 w-full h-2 bg-gradient-to-r from-pink-500 via-purple-600 to-blue-500"></div>
+    </div>
+</body>
+</html>
+

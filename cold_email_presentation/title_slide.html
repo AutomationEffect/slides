@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cold Email Works for (Almost) Everyone</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #334155 50%, #475569 75%, #64748b 100%);
+            font-family: 'Montserrat', sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .animated-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(236, 72, 153, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(16, 185, 129, 0.15) 0%, transparent 50%);
+            animation: pulse 4s ease-in-out infinite alternate;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+        
+        .pre-headline {
+            background: linear-gradient(135deg, #ec4899 0%, #be185d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(236, 72, 153, 0.5);
+        }
+        
+        .main-headline {
+            background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+        
+        .sub-headline {
+            color: #cbd5e1;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .presenter-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        
+        .headshot {
+            border: 3px solid #ec4899;
+            box-shadow: 0 0 30px rgba(236, 72, 153, 0.4);
+        }
+        
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        .floating-element {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .floating-element:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .floating-element:nth-child(2) {
+            top: 20%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+        
+        .floating-element:nth-child(3) {
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+        
+        .glow-effect {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.1) 0%, transparent 70%);
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            0% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+            100% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container relative">
+        <!-- Animated Background -->
+        <div class="animated-bg"></div>
+        <div class="glow-effect"></div>
+        
+        <!-- Floating Elements -->
+        <div class="floating-elements">
+            <i class="floating-element fas fa-envelope text-6xl text-pink-500"></i>
+            <i class="floating-element fas fa-chart-line text-5xl text-blue-500"></i>
+            <i class="floating-element fas fa-rocket text-4xl text-green-500"></i>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="relative z-10 h-full flex flex-col justify-center p-12">
+            <div class="grid grid-cols-3 gap-8 h-full items-center">
+                <!-- Left Column - Headlines -->
+                <div class="col-span-2 space-y-6">
+                    <!-- Pre-Headline -->
+                    <div class="pre-headline text-xl font-bold tracking-wide">
+                        Why Are You Still Wondering If Cold Email Will Work for You?
+                    </div>
+                    
+                    <!-- Main Headline -->
+                    <h1 class="main-headline text-5xl font-black leading-tight">
+                        Cold Email Works for (Almost) Everyone — But Only If You Let It.
+                    </h1>
+                    
+                    <!-- Subheadline -->
+                    <div class="sub-headline text-lg leading-relaxed max-w-4xl">
+                        If your ideal clients have inboxes, this works. It's not something you "test" to see if it works—it's something you tune until it does. Cold email has already proven itself in nearly every industry, business model, and niche. The only variable left… is you.
+                    </div>
+                    
+                    <!-- Call to Action Hint -->
+                    <div class="flex items-center space-x-4 mt-8">
+                        <div class="w-12 h-1 bg-gradient-to-r from-pink-500 to-purple-600 rounded"></div>
+                        <span class="text-white font-semibold text-lg">Let's prove it to you</span>
+                        <i class="fas fa-arrow-right text-pink-500 text-xl animate-pulse"></i>
+                    </div>
+                </div>
+                
+                <!-- Right Column - Presenter Info -->
+                <div class="flex flex-col items-center space-y-6">
+                    <!-- Headshot -->
+                    <div class="relative">
+                        <img src="https://private-us-east-1.manuscdn.com/sessionFile/e2uvHgi2pk4dmFsEgdjdPe/sandbox/slides_resource_imb7ax5hgm1pv5zootkt3-e3534e28-e2b-prod-aws_1750030386154_na1fn_L2hvbWUvdWJ1bnR1L2NvbGRfZW1haWxfcHJlc2VudGF0aW9uL2FuZHJld19oZWFkc2hvdA.png?x-oss-process=image/resize,w_1560,h_1560/format,webp&Expires=1767225600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvZTJ1dkhnaTJwazRkbUZzRWdkamRQZS9zYW5kYm94L3NsaWRlc19yZXNvdXJjZV9pbWI3YXg1aGdtMXB2NXpvb3RrdDMtZTM1MzRlMjgtZTJiLXByb2QtYXdzXzE3NTAwMzAzODYxNTRfbmExZm5fTDJodmJXVXZkV0oxYm5SMUwyTnZiR1JmWlcxaGFXeGZjSEpsYzJWdWRHRjBhVzl1TDJGdVpISmxkMTlvWldGa2MyaHZkQS5wbmc~eC1vc3MtcHJvY2Vzcz1pbWFnZS9yZXNpemUsd18xNTYwLGhfMTU2MC9mb3JtYXQsd2VicCIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc2NzIyNTYwMH19fV19&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=AIpJVrYatCJiTxorKjxxpEtzr1Vq6xA7geFLzU~RUalMIrXXP-MEmr8alU6k~udLDGWtoxsMly828wcW5WfPsyf63RAV~qfwjZYZarYyn7SZSamhhvth8ZKVZWBKvNMVltat0MwPWIPj74v58qsvbsys8GQ4UNCq80ZqTfwNqsYEDT0NwbAFxvrxUS-SvqyJ~Q9c33cgxsMSSi1i7TxzyaGB8V7GVuZyaLZcGtKNjpeLKQ3Fx4jtq-06rhLWqEmeuhciOdQauCcDRxtCyWdEZAAe7YIZoy22OigeON396tmDgA1PhSkr8zykDt5e~a~uNIEMtKF2vWCbZJD~XhmHfA__" 
+                             alt="Andrew Naegele" 
+                             class="headshot w-48 h-48 rounded-full object-cover">
+                        <div class="absolute -bottom-2 -right-2 w-12 h-12 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full flex items-center justify-center">
+                            <i class="fas fa-check text-white text-xl"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Presenter Card -->
+                    <div class="presenter-card rounded-xl p-6 text-center max-w-xs">
+                        <h3 class="text-2xl font-bold text-white mb-2">Andrew Naegele</h3>
+                        <p class="text-pink-400 font-semibold mb-3">Cold Email Expert</p>
+                        <div class="text-sm text-gray-300">
+                            <p class="leading-relaxed">Proven cold email strategist helping businesses scale through systematic outbound campaigns</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Bottom Accent -->
+        <div class="absolute bottom-0 left-0 w-full h-2 bg-gradient-to-r from-pink-500 via-purple-600 to-blue-500"></div>
+    </div>
+</body>
+</html>
+

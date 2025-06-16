@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Hidden B2B in B2C</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #334155 50%, #475569 75%, #64748b 100%);
+            font-family: 'Montserrat', sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .b2c-highlight {
+            background: linear-gradient(135deg, #ec4899 0%, #9333ea 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            0% { text-shadow: 0 0 20px rgba(236, 72, 153, 0.5); }
+            100% { text-shadow: 0 0 40px rgba(236, 72, 153, 0.8); }
+        }
+        
+        .company-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: slideInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        
+        .company-card:nth-child(1) { animation-delay: 0.2s; }
+        .company-card:nth-child(2) { animation-delay: 0.4s; }
+        .company-card:nth-child(3) { animation-delay: 0.6s; }
+        .company-card:nth-child(4) { animation-delay: 0.8s; }
+        
+        .company-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+        }
+        
+        .logo-placeholder {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 900;
+            color: white;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .logo-placeholder:nth-child(1) { background: linear-gradient(135deg, #1db954 0%, #1ed760 100%); }
+        .logo-placeholder:nth-child(2) { background: linear-gradient(135deg, #000000 0%, #333333 100%); }
+        .logo-placeholder:nth-child(3) { background: linear-gradient(135deg, #ff9500 0%, #ffad33 100%); }
+        .logo-placeholder:nth-child(4) { background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%); }
+        
+        .b2b-badge {
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.9) 0%, rgba(147, 51, 234, 0.9) 100%);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .key-insight {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.9) 0%, rgba(147, 51, 234, 0.9) 100%);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        @keyframes slideInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container relative">
+        <div class="relative z-10 h-full flex flex-col justify-center p-8">
+            <!-- Title -->
+            <div class="text-center mb-6">
+                <h1 class="b2c-highlight text-4xl font-black mb-2">The Hidden B2B in B2C</h1>
+                <p class="text-lg text-gray-300 font-semibold">Consumer brands secretly dominating B2B with cold email</p>
+            </div>
+
+            <!-- Company Examples -->
+            <div class="grid grid-cols-2 gap-6 max-w-6xl mx-auto mb-6">
+                <div class="company-card rounded-xl p-6 shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="logo-placeholder mr-4">S</div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-white">Spotify</h3>
+                            <p class="text-gray-300 text-sm">Music Streaming Platform</p>
+                        </div>
+                    </div>
+                    <div class="b2b-badge text-white rounded-lg p-3 mb-3">
+                        <p class="font-semibold text-center">Spotify for Business</p>
+                    </div>
+                    <p class="text-gray-300 text-sm">Cold emails restaurants, retail stores, and gyms for their business music licensing platform. Generates millions in B2B revenue.</p>
+                </div>
+
+                <div class="company-card rounded-xl p-6 shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="logo-placeholder mr-4">U</div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-white">Uber</h3>
+                            <p class="text-gray-300 text-sm">Ride-sharing Platform</p>
+                        </div>
+                    </div>
+                    <div class="b2b-badge text-white rounded-lg p-3 mb-3">
+                        <p class="font-semibold text-center">Uber for Business</p>
+                    </div>
+                    <p class="text-gray-300 text-sm">Cold emails companies for corporate travel accounts. B2B division now represents 30% of total revenue.</p>
+                </div>
+
+                <div class="company-card rounded-xl p-6 shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="logo-placeholder mr-4">A</div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-white">Amazon</h3>
+                            <p class="text-gray-300 text-sm">E-commerce Giant</p>
+                        </div>
+                    </div>
+                    <div class="b2b-badge text-white rounded-lg p-3 mb-3">
+                        <p class="font-semibold text-center">Amazon Business</p>
+                    </div>
+                    <p class="text-gray-300 text-sm">Cold emails procurement teams at Fortune 500 companies. Amazon Business generates over $25B annually.</p>
+                </div>
+
+                <div class="company-card rounded-xl p-6 shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="logo-placeholder mr-4">A</div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-white">Airbnb</h3>
+                            <p class="text-gray-300 text-sm">Home Sharing Platform</p>
+                        </div>
+                    </div>
+                    <div class="b2b-badge text-white rounded-lg p-3 mb-3">
+                        <p class="font-semibold text-center">Airbnb for Work</p>
+                    </div>
+                    <p class="text-gray-300 text-sm">Cold emails HR departments for corporate housing solutions. Business travel accounts for billions in bookings.</p>
+                </div>
+            </div>
+
+            <!-- Key Insight -->
+            <div class="key-insight text-white rounded-xl p-6 max-w-4xl mx-auto shadow-2xl">
+                <div class="text-center">
+                    <i class="fas fa-lightbulb text-3xl text-yellow-400 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">The Pattern is Clear</h3>
+                    <p class="text-base">Every major consumer brand has a hidden B2B division powered by cold email. If it works for them, it works for you.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Bottom Accent -->
+        <div class="absolute bottom-0 left-0 w-full h-2 bg-gradient-to-r from-pink-500 via-purple-600 to-blue-500"></div>
+    </div>
+</body>
+</html>
+

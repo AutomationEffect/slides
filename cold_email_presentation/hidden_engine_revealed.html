@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Hidden Engine Revealed</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #334155 50%, #475569 75%, #64748b 100%);
+            font-family: 'Montserrat', sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+        .engine-highlight {
+            background: linear-gradient(135deg, #ec4899 0%, #be185d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(236, 72, 153, 0.5);
+        }
+        .revelation-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        .proof-badge {
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.9) 0%, rgba(147, 51, 234, 0.9) 100%);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .final-revelation {
+            background: linear-gradient(135deg, rgba(31, 41, 55, 0.95) 0%, rgba(17, 24, 39, 0.95) 100%);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(251, 191, 36, 0.5);
+            box-shadow: 0 0 30px rgba(251, 191, 36, 0.3);
+        }
+        .quote-highlight {
+            color: #fbbf24;
+            text-shadow: 0 0 20px rgba(251, 191, 36, 0.8);
+            font-weight: 900;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen">
+    <div class="slide-container p-10 flex flex-col justify-center">
+        <!-- Title -->
+        <div class="text-center mb-10">
+            <h1 class="engine-highlight text-4xl font-black mb-3">The Hidden Engine Revealed</h1>
+            <p class="text-xl text-gray-300 font-semibold">The infrastructure of growth, not just a tactic</p>
+        </div>
+
+        <!-- Key Revelations -->
+        <div class="grid grid-cols-3 gap-8 max-w-6xl mx-auto mb-10">
+            <div class="revelation-card rounded-xl p-6 shadow-lg text-center">
+                <div class="text-4xl text-pink-500 mb-4"><i class="fas fa-cogs"></i></div>
+                <h3 class="text-xl font-bold text-white mb-3">Qualified Conversations</h3>
+                <div class="proof-badge text-white rounded-lg p-3 mb-3">
+                    <p class="font-semibold">10x Lower Cost</p>
+                </div>
+                <p class="text-gray-300 text-sm">Delivers qualified prospects at a fraction of the cost of any other channel</p>
+            </div>
+            <div class="revelation-card rounded-xl p-6 shadow-lg text-center">
+                <div class="text-4xl text-purple-500 mb-4"><i class="fas fa-building"></i></div>
+                <h3 class="text-xl font-bold text-white mb-3">Top Companies</h3>
+                <div class="proof-badge text-white rounded-lg p-3 mb-3">
+                    <p class="font-semibold">$2.5T+ Combined Value</p>
+                </div>
+                <p class="text-gray-300 text-sm">Used by Salesforce, Uber, Airbnb, Stripe, and thousands of successful companies</p>
+            </div>
+            <div class="revelation-card rounded-xl p-6 shadow-lg text-center">
+                <div class="text-4xl text-blue-500 mb-4"><i class="fas fa-universal-access"></i></div>
+                <h3 class="text-xl font-bold text-white mb-3">Universal Application</h3>
+                <div class="proof-badge text-white rounded-lg p-3 mb-3">
+                    <p class="font-semibold">Any Business</p>
+                </div>
+                <p class="text-gray-300 text-sm">Works for any business with an email address - B2B, B2C, SaaS, local, global</p>
+            </div>
+        </div>
+
+        <!-- Final Revelation -->
+        <div class="final-revelation text-white rounded-xl p-8 max-w-4xl mx-auto shadow-2xl">
+            <div class="text-center">
+                <i class="fas fa-quote-left text-2xl text-yellow-400 mb-4"></i>
+                <h3 class="quote-highlight text-2xl font-black mb-4">"Cold email isn't a tactic—it's the infrastructure of growth."</h3>
+                <p class="text-base mb-4 text-gray-100">You've seen the math, the stories, the companies. Cold email is the common thread connecting every major business success story.</p>
+                <p class="text-sm italic text-yellow-300" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.8);">Until you believe in cold email, borrow mine—I've seen it transform businesses across every industry.</p>
+            </div>
+        </div>
+        
+        <!-- Bottom Accent -->
+        <div class="absolute bottom-0 left-0 w-full h-2 bg-gradient-to-r from-pink-500 via-purple-600 to-blue-500"></div>
+    </div>
+</body>
+</html>

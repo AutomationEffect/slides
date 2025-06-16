@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Competitive Edge</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+
+  <style>
+    /* ── 1 ▸ Hard-lock slide to 16 : 9 ─────────────────────────────── */
+    .slide{width:1280px;height:720px;position:relative;overflow:hidden;
+           font-family:"Montserrat",sans-serif;
+           background:linear-gradient(135deg,#0f172a 0%,#1e293b 25%,#334155 50%,#475569 75%,#64748b 100%);}
+
+    /* ── 2 ▸ Auto-scale wrapper keeps everything inside frame ──────── */
+    .wrap{position:absolute;inset:0;padding:1.5rem 2rem;box-sizing:border-box;
+          display:flex;flex-direction:column;align-items:center;justify-content:flex-start;
+          transform-origin:top center;--real:680;--s:calc(720 / max(720,var(--real)));
+          transform:scale(var(--s));}
+
+    /* ── 3 ▸ Headline block ────────────────────────────────────────── */
+    h1{font-size:2.3rem;font-weight:800;line-height:1.15;margin-bottom:.4rem;
+        background:linear-gradient(135deg,#ec4899 0%,#be185d 100%);
+        -webkit-background-clip:text;-webkit-text-fill-color:transparent;text-align:center;}
+    .lead{font-size:.95rem;font-weight:600;color:#d1d5db;margin-bottom:1.2rem;text-align:center;}
+
+    /* ── 4 ▸ Grid + cards ──────────────────────────────────────────── */
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;max-width:1020px;width:100%;margin-bottom:1.2rem;}
+
+    .card{padding:.8rem;border-radius:.8rem;background:rgba(255,255,255,.09);
+          backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.18);
+          display:flex;flex-direction:column;justify-content:space-between;transition:.25s;}
+    .card:hover{transform:translateY(-4px) scale(1.02);box-shadow:0 18px 34px rgba(0,0,0,.35);}
+    .icon{font-size:1.7rem;margin-bottom:.4rem;animation:bounce 3s ease-in-out infinite;}
+    h3{font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:.15rem;}
+    .sub{font-size:.75rem;color:#d1d5db;margin-bottom:.4rem;}
+    .badge{font-size:.72rem;font-weight:700;text-align:center;color:#fff;margin-bottom:.4rem;
+           padding:.3rem;border-radius:.5rem;
+           background:linear-gradient(135deg,rgba(236,72,153,.9) 0%,rgba(147,51,234,.9) 100%);}
+    .copy{font-size:.75rem;color:#d1d5db;}
+
+    /* ── 5 ▸ Summary strip ─────────────────────────────────────────── */
+    .summary{padding:1rem 1.2rem;max-width:840px;border-radius:.85rem;
+             background:linear-gradient(135deg,rgba(59,130,246,.9) 0%,rgba(147,51,234,.9) 100%);
+             text-align:center;color:#fff;}
+    .summary h2{font-size:1.15rem;font-weight:700;margin-bottom:.3rem;}
+    .summary p{font-size:.85rem;}
+
+    /* ── 6 ▸ Accent bar ────────────────────────────────────────────── */
+    .accent{position:absolute;bottom:0;left:0;width:100%;height:6px;
+            background:linear-gradient(to right,#ec4899,#9333ea,#3b82f6);}
+
+    /* ── Animations ───────────────────────────────────────────────── */
+    @keyframes bounce{0%,20%,50%,80%,100%{transform:translateY(0)}40%{transform:translateY(-9px)}60%{transform:translateY(-4px)}}
+  </style>
+</head>
+
+<body>
+  <div class="slide">
+    <div class="wrap">
+
+      <!-- headline -->
+      <h1>The Competitive Edge</h1>
+      <p class="lead">Platform independence and forced clarity</p>
+
+      <!-- two-column grid -->
+      <div class="grid">
+
+        <!-- Platform Independence -->
+        <div class="card">
+          <div>
+            <div class="icon text-pink-500"><i class="fas fa-shield-alt"></i></div>
+            <h3>Platform Independence</h3>
+            <div class="sub">No algorithm changes can kill your results</div>
+            <div class="badge">Own your distribution</div>
+          </div>
+          <p class="copy">While competitors panic over iOS or LinkedIn updates, your cold email engine runs unbothered.</p>
+        </div>
+
+        <!-- Forced Clarity -->
+        <div class="card">
+          <div>
+            <div class="icon text-purple-500"><i class="fas fa-brain"></i></div>
+            <h3>Forced Clarity</h3>
+            <div class="sub">Sharpens your value proposition</div>
+            <div class="badge">Crystal clear messaging</div>
+          </div>
+          <p class="copy">Cold email demands you express your value in 50 words. The discipline lifts every channel.</p>
+        </div>
+
+        <!-- Superior Performance -->
+        <div class="card">
+          <div>
+            <div class="icon text-blue-500"><i class="fas fa-chart-bar"></i></div>
+            <h3>Superior Performance</h3>
+            <div class="sub">Outperforms every other channel</div>
+            <div class="badge">$42 ROI per $1</div>
+          </div>
+          <p class="copy">Beats ads, socials, content, and events on open rates, targeting, and cost efficiency.</p>
+        </div>
+
+        <!-- Infinite Scalability -->
+        <div class="card">
+          <div>
+            <div class="icon text-green-500"><i class="fas fa-infinity"></i></div>
+            <h3>Infinite Scalability</h3>
+            <div class="sub">No budget caps or audience limits</div>
+            <div class="badge">Scale without limits</div>
+          </div>
+          <p class="copy">Prospect pool grows linearly. More contacts equal more opportunity—not higher costs.</p>
+        </div>
+
+      </div>
+
+      <!-- summary -->
+      <div class="summary">
+        <i class="fas fa-crown text-yellow-300 text-xl"></i>
+        <h2>The Ultimate Advantage</h2>
+        <p>Cold email gives predictable, scalable, platform-independent growth that compounds over time.</p>
+      </div>
+
+    </div>
+    <div class="accent"></div>
+  </div>
+</body>
+</html>

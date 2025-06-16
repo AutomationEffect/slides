@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unmatched Precision & Control</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #334155 50%, #475569 75%, #64748b 100%);
+            font-family: 'Montserrat', sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .precision-highlight {
+            background: linear-gradient(135deg, #ec4899 0%, #9333ea 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            0% { text-shadow: 0 0 20px rgba(236, 72, 153, 0.5); }
+            100% { text-shadow: 0 0 40px rgba(236, 72, 153, 0.8); }
+        }
+        
+        .control-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: slideInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        
+        .control-card:nth-child(1) { animation-delay: 0.2s; }
+        .control-card:nth-child(2) { animation-delay: 0.4s; }
+        .control-card:nth-child(3) { animation-delay: 0.6s; }
+        
+        .control-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+        }
+        
+        .comparison-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            animation: slideInRight 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateX(50px);
+        }
+        
+        .performance-row {
+            background: rgba(255, 255, 255, 0.9);
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+        
+        .performance-row:hover {
+            background: rgba(255, 255, 255, 1);
+            transform: translateX(5px);
+            border-left-color: #ec4899;
+        }
+        
+        .stat-highlight {
+            background: linear-gradient(135deg, #ec4899 0%, #9333ea 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .vs-highlight {
+            color: #6b7280;
+        }
+        
+        .final-callout {
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.9) 0%, rgba(147, 51, 234, 0.9) 100%);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .icon-control {
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        @keyframes slideInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container relative">
+        <div class="relative z-10 h-full flex flex-col justify-center p-8">
+            <!-- Title -->
+            <div class="text-center mb-6">
+                <h1 class="precision-highlight text-4xl font-black mb-2">Unmatched Precision & Control</h1>
+                <p class="text-lg text-gray-300 font-semibold">Direct access to your ideal prospects</p>
+            </div>
+
+            <div class="flex gap-6 max-w-full mx-auto px-6">
+                <!-- Left Section: Control Benefits -->
+                <div class="w-96">
+                    <div class="space-y-5">
+                        <div class="control-card rounded-xl p-5 shadow-lg border-l-4 border-pink-500">
+                            <div class="flex items-center mb-3">
+                                <i class="fas fa-bullseye icon-control text-3xl text-pink-500 mr-4"></i>
+                                <div>
+                                    <h3 class="text-xl font-bold text-white">Direct Inbox Access</h3>
+                                    <p class="text-gray-300 text-sm">No algorithms blocking your message</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-300 text-sm">Your email lands directly in their inbox. No middleman, no algorithm deciding if your message gets seen.</p>
+                        </div>
+
+                        <div class="control-card rounded-xl p-5 shadow-lg border-l-4 border-purple-500">
+                            <div class="flex items-center mb-3">
+                                <i class="fas fa-database icon-control text-3xl text-purple-500 mr-4" style="animation-delay: 0.5s;"></i>
+                                <div>
+                                    <h3 class="text-xl font-bold text-white">Own Your Lists</h3>
+                                    <p class="text-gray-300 text-sm">Platform-independent contact database</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-300 text-sm">Your contact list belongs to you. No platform can take it away or change the rules overnight.</p>
+                        </div>
+
+                        <div class="control-card rounded-xl p-5 shadow-lg border-l-4 border-blue-500">
+                            <div class="flex items-center mb-3">
+                                <i class="fas fa-crosshairs icon-control text-3xl text-blue-500 mr-4" style="animation-delay: 1s;"></i>
+                                <div>
+                                    <h3 class="text-xl font-bold text-white">Precise Targeting</h3>
+                                    <p class="text-gray-300 text-sm">Reach exactly who you want</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-300 text-sm">Target by company size, role, industry, location, or any criteria you choose. Surgical precision.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Section: Performance Comparison -->
+                <div class="flex-1">
+                    <div class="comparison-section rounded-xl p-6 shadow-lg flex flex-col h-full">
+                        <h2 class="text-2xl font-bold text-white text-center mb-6">Performance vs Other Channels</h2>
+                        
+                        <div class="space-y-4 flex-1 flex flex-col justify-center">
+                            <div class="performance-row flex justify-between items-center p-4 rounded-lg">
+                                <span class="text-gray-800 font-semibold text-base">Open Rates</span>
+                                <div class="text-right">
+                                    <div class="stat-highlight text-xl font-bold">25-35%</div>
+                                    <div class="vs-highlight text-sm">vs 2-5% social</div>
+                                </div>
+                            </div>
+
+                            <div class="performance-row flex justify-between items-center p-4 rounded-lg">
+                                <span class="text-gray-800 font-semibold text-base">Response Rates</span>
+                                <div class="text-right">
+                                    <div class="stat-highlight text-xl font-bold">5-15%</div>
+                                    <div class="vs-highlight text-sm">vs 1-3% ads</div>
+                                </div>
+                            </div>
+
+                            <div class="performance-row flex justify-between items-center p-4 rounded-lg">
+                                <span class="text-gray-800 font-semibold text-base">Targeting Accuracy</span>
+                                <div class="text-right">
+                                    <div class="stat-highlight text-xl font-bold">95%+</div>
+                                    <div class="vs-highlight text-sm">vs 60% platforms</div>
+                                </div>
+                            </div>
+
+                            <div class="performance-row flex justify-between items-center p-4 rounded-lg">
+                                <span class="text-gray-800 font-semibold text-base">Speed to Results</span>
+                                <div class="text-right">
+                                    <div class="stat-highlight text-xl font-bold">24-48hrs</div>
+                                    <div class="vs-highlight text-sm">vs weeks/months</div>
+                                </div>
+                            </div>
+
+                            <div class="performance-row flex justify-between items-center p-4 rounded-lg">
+                                <span class="text-gray-800 font-semibold text-base">Cost Control</span>
+                                <div class="text-right">
+                                    <div class="stat-highlight text-xl font-bold">$0.10/email</div>
+                                    <div class="vs-highlight text-sm">vs $25+ per click</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-6">
+                            <div class="final-callout text-white rounded-lg p-4">
+                                <p class="font-bold text-lg text-center">You control the message, timing, and audience</p>
+                                <p class="text-sm opacity-90 text-center">No platform can take that away</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Bottom Accent -->
+        <div class="absolute bottom-0 left-0 w-full h-2 bg-gradient-to-r from-pink-500 via-purple-600 to-blue-500"></div>
+    </div>
+</body>
+</html>
+

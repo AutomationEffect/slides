@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The $42 Question</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #334155 50%, #475569 75%, #64748b 100%);
+            font-family: 'Montserrat', sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .question-highlight {
+            background: linear-gradient(135deg, #ec4899 0%, #be185d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .cost-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .cost-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+        
+        .agenda-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-left: 4px solid #ec4899;
+            transition: all 0.3s ease;
+        }
+        
+        .agenda-item:hover {
+            border-left-color: #9333ea;
+            transform: translateX(5px);
+        }
+        
+        .floating-icon {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container relative">
+        
+        <!-- Floating Icons -->
+        <i class="floating-icon fas fa-dollar-sign text-6xl text-green-500" style="top: 15%; right: 10%; animation-delay: 0s;"></i>
+        <i class="floating-icon fas fa-envelope text-5xl text-blue-500" style="bottom: 20%; left: 15%; animation-delay: 2s;"></i>
+        <i class="floating-icon fas fa-chart-line text-4xl text-purple-500" style="top: 60%; right: 20%; animation-delay: 1s;"></i>
+        
+        <div class="relative z-10 h-full flex flex-col justify-center p-8">
+            <!-- Main Question -->
+            <div class="text-center mb-8">
+                <h1 class="question-highlight text-5xl font-black mb-4">The $42 Question</h1>
+                <p class="text-2xl text-gray-300 font-semibold max-w-4xl mx-auto leading-tight">
+                    What would it mean for your business if you could reach 1,000 qualified decision-makers for less than the cost of a single LinkedIn ad click?
+                </p>
+            </div>
+            
+            <!-- Cost Comparison -->
+            <div class="grid grid-cols-2 gap-8 max-w-4xl mx-auto mb-8">
+                <div class="cost-card rounded-xl p-6 text-center border-l-4 border-red-500">
+                    <i class="fab fa-linkedin text-4xl text-blue-400 mb-4"></i>
+                    <h3 class="text-xl font-bold text-white mb-2">LinkedIn Ad Click</h3>
+                    <div class="text-4xl font-black text-red-400 mb-2">$42</div>
+                    <p class="text-gray-300">Reaches 1 person (maybe)</p>
+                </div>
+                
+                <div class="cost-card rounded-xl p-6 text-center border-l-4 border-green-500">
+                    <i class="fas fa-envelope text-4xl text-green-400 mb-4"></i>
+                    <h3 class="text-xl font-bold text-white mb-2">Cold Email Campaign</h3>
+                    <div class="text-4xl font-black text-green-400 mb-2">$42</div>
+                    <p class="text-gray-300">Reaches 420 prospects directly</p>
+                </div>
+            </div>
+            
+            <!-- Agenda -->
+            <div class="max-w-5xl mx-auto">
+                <h2 class="text-2xl font-bold text-white mb-4 text-center">Here's Our Roadmap:</h2>
+                <div class="grid grid-cols-3 gap-4">
+                    <div class="agenda-item rounded-lg p-4 shadow-lg">
+                        <div class="flex items-center mb-2">
+                            <span class="w-8 h-8 bg-red-500 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">1</span>
+                            <h3 class="font-bold text-white">The Problem</h3>
+                        </div>
+                        <p class="text-sm text-gray-300">Why every strategy you've tried has failed</p>
+                    </div>
+                    
+                    <div class="agenda-item rounded-lg p-4 shadow-lg">
+                        <div class="flex items-center mb-2">
+                            <span class="w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">2</span>
+                            <h3 class="font-bold text-white">The Solution</h3>
+                        </div>
+                        <p class="text-sm text-gray-300">The breakthrough that changes everything</p>
+                    </div>
+                    
+                    <div class="agenda-item rounded-lg p-4 shadow-lg">
+                        <div class="flex items-center mb-2">
+                            <span class="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">3</span>
+                            <h3 class="font-bold text-white">The Proof</h3>
+                        </div>
+                        <p class="text-sm text-gray-300">Real companies, real results, every industry</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Bottom Accent -->
+        <div class="absolute bottom-0 left-0 w-full h-2 bg-gradient-to-r from-pink-500 via-purple-600 to-blue-500"></div>
+    </div>
+</body>
+</html>
+

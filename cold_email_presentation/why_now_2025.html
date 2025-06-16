@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why Now? The 2025 Imperative</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css?v=3" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #334155 50%, #475569 75%, #64748b 100%);
+            font-family: 'Montserrat', sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+        .reality-chip {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .progress-bar {
+            height: 8px;
+            background: #FF1F8F;
+            width: 0;
+            animation: fillBar 5s linear forwards;
+        }
+        @keyframes fillBar {
+            to { width: 100%; }
+        }
+        .cta-button {
+            background: linear-gradient(135deg, #FF1F8F 0%, #8E2BFF 100%);
+            box-shadow: 0 8px 24px 0 rgba(0,0,0,0.25);
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen">
+    <div class="slide-container p-8 flex flex-col justify-between">
+        <div>
+            <div class="text-center mb-8">
+                <h1 class="text-5xl font-black mb-2" style="color: #FF1F8F; font-family: 'Montserrat', sans-serif; font-weight: 900;">Why Now? The 2025 Imperative</h1>
+                <p class="text-xl text-white opacity-60 max-w-2xl mx-auto" style="font-size: 20px;">The window is closing—here's why you must act today</p>
+            </div>
+            <div class="flex gap-8 max-w-7xl mx-auto">
+                <div class="w-3/5">
+                    <canvas id="trendChart"></canvas>
+                </div>
+                <div class="w-2/5 flex flex-col justify-around gap-4">
+                    <div class="reality-chip rounded-lg p-4 flex items-center">
+                        <i class="fas fa-arrow-up text-red-500 text-3xl mr-4"></i>
+                        <p class="text-white text-lg">Ad Costs +69%</p>
+                    </div>
+                    <div class="reality-chip rounded-lg p-4 flex items-center">
+                        <i class="fas fa-arrow-down text-red-500 text-3xl mr-4"></i>
+                        <p class="text-white text-lg">Organic Reach <2%</p>
+                    </div>
+                    <div class="reality-chip rounded-lg p-4 flex items-center">
+                        <i class="fas fa-check-circle text-green-500 text-3xl mr-4"></i>
+                        <p class="text-white text-lg">Cold Email ROI $42:1</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="w-full">
+            <div class="progress-bar"></div>
+            <button class="cta-button w-full h-10 text-white font-bold text-lg mt-2">Act Before Competitors Inbox Your Clients</button>
+        </div>
+        <div class="absolute bottom-0 left-0 w-full h-1.5 bg-gradient-to-r from-pink-500 via-purple-600 to-blue-500"></div>
+    </div>
+
+    <script>
+        const ctx = document.getElementById('trendChart').getContext('2d');
+        const chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Ad Cost Index', 'Organic Reach %', 'Cold-Email ROI'],
+                datasets: [
+                    {
+                        label: '2025',
+                        data: [169, 2, 4200],
+                        backgroundColor: [
+                            'rgba(239, 68, 68, 0.7)',
+                            'rgba(245, 158, 11, 0.7)',
+                            'rgba(16, 185, 129, 0.7)'
+                        ],
+                        borderColor: [
+                            '#ef4444',
+                            '#f59e0b',
+                            '#10b981'
+                        ],
+                        borderWidth: 2,
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                indexAxis: 'y',
+                plugins: {
+                    legend: {
+                        display: false,
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed.x !== null) {
+                                    if (context.label === 'Cold-Email ROI') {
+                                        label += '$' + (context.parsed.x / 100) + ':1';
+                                    } else if (context.label === 'Organic Reach %') {
+                                        label += context.parsed.x + '%';
+                                    } else {
+                                        label += context.parsed.x;
+                                    }
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        max: 4200,
+                        grid: {
+                            color: 'rgba(255,255,255,0.1)'
+                        },
+                        ticks: {
+                            color: '#ffffff',
+                            callback: function(value, index, values) {
+                                if (value === 4200) return '$42:1';
+                                if (value === 0) return '0';
+                                return null;
+                            }
+                        }
+                    },
+                    y: {
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            color: '#ffffff'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

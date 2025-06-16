@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caveats for Success</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #334155 50%, #475569 75%, #64748b 100%);
+            font-family: 'Montserrat', sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .caveats-highlight {
+            background: linear-gradient(135deg, #ec4899 0%, #be185d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(236, 72, 153, 0.5);
+        }
+        
+        .caveat-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: slideInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        
+        .caveat-card:nth-child(1) { animation-delay: 0.2s; }
+        .caveat-card:nth-child(2) { animation-delay: 0.4s; }
+        .caveat-card:nth-child(3) { animation-delay: 0.6s; }
+        .caveat-card:nth-child(4) { animation-delay: 0.8s; }
+        
+        .caveat-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+        
+        .honesty-box {
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.9) 0%, rgba(147, 51, 234, 0.9) 100%);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: slideInUp 1s ease-out 1s forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .icon-warning {
+            color: #f59e0b;
+            animation: warning 2s ease-in-out infinite;
+        }
+        
+        @keyframes warning {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        @keyframes slideInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container relative">
+        <div class="relative z-10 h-full flex flex-col justify-center p-8">
+            <!-- Title -->
+            <div class="text-center mb-8">
+                <h1 class="caveats-highlight text-4xl font-black mb-2">Caveats for Success</h1>
+                <p class="text-xl text-gray-300 font-semibold">Let's be honest about what it takes</p>
+            </div>
+
+            <!-- Caveats Grid -->
+            <div class="grid grid-cols-2 gap-6 max-w-6xl mx-auto mb-6">
+                <div class="caveat-card rounded-xl p-6 shadow-lg border-l-4 border-yellow-500">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-server icon-warning text-2xl mr-4"></i>
+                        <h3 class="text-xl font-bold text-white">Deliverability Matters</h3>
+                    </div>
+                    <p class="text-gray-300 text-sm">You need proper setup: SPF, DKIM, DMARC, warm-up, and good sending practices.</p>
+                </div>
+
+                <div class="caveat-card rounded-xl p-6 shadow-lg border-l-4 border-blue-500">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-crosshairs text-2xl text-blue-400 mr-4"></i>
+                        <h3 class="text-xl font-bold text-white">Targeting is Critical</h3>
+                    </div>
+                    <p class="text-gray-300 text-sm">Random lists don't work. You need the right people with verified emails and clear intent.</p>
+                </div>
+
+                <div class="caveat-card rounded-xl p-6 shadow-lg border-l-4 border-green-500">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-pen-fancy text-2xl text-green-400 mr-4"></i>
+                        <h3 class="text-xl font-bold text-white">Copy Quality</h3>
+                    </div>
+                    <p class="text-gray-300 text-sm">Generic templates fail. Your message must be relevant, valuable, and human.</p>
+                </div>
+
+                <div class="caveat-card rounded-xl p-6 shadow-lg border-l-4 border-purple-500">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-chart-line text-2xl text-purple-400 mr-4"></i>
+                        <h3 class="text-xl font-bold text-white">Patience & Testing</h3>
+                    </div>
+                    <p class="text-gray-300 text-sm">Success requires iteration. Test, measure, optimize, repeat until you find what works.</p>
+                </div>
+            </div>
+
+            <!-- Honesty Box -->
+            <div class="text-center">
+                <div class="honesty-box text-white rounded-xl p-6 max-w-4xl mx-auto shadow-2xl">
+                    <p class="text-lg font-bold mb-2">Here's the truth: Cold email isn't a magic button.</p>
+                    <p class="text-base opacity-90">But when done right, it's the most reliable, scalable, and cost-effective way to reach your ideal prospects. The companies that master it dominate their markets.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Bottom Accent -->
+        <div class="absolute bottom-0 left-0 w-full h-2 bg-gradient-to-r from-pink-500 via-purple-600 to-blue-500"></div>
+    </div>
+</body>
+</html>
+
