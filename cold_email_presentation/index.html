@@ -48,15 +48,17 @@
     </div>
 
     <!-- Presentation Mode Overlay -->
-    <div id="presentation-overlay" class="fixed inset-0 bg-black z-50 hidden">
-        <div class="h-full w-full flex items-center justify-center">
-            <iframe id="presentation-frame" class="w-full h-full border-none" src=""></iframe>
+    <div id="presentation-overlay" class="fixed inset-0 bg-black z-50 hidden" style="z-index: 999999;">
+        <div class="h-screen w-screen flex items-center justify-center overflow-hidden">
+            <iframe id="presentation-frame" class="border-none" src="" style="width: 100vw; height: 100vh; border: none; margin: 0; padding: 0;"></iframe>
         </div>
-        <div id="presentation-controls" class="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-50 rounded-lg px-4 py-2 text-white text-sm">
-            Press <kbd class="bg-gray-700 px-2 py-1 rounded">←</kbd> / <kbd class="bg-gray-700 px-2 py-1 rounded">→</kbd> to navigate • <kbd class="bg-gray-700 px-2 py-1 rounded">Esc</kbd> to exit
-        </div>
-        <div id="slide-counter" class="absolute top-4 right-4 bg-black bg-opacity-50 rounded-lg px-3 py-1 text-white text-sm">
+
+        <div id="slide-counter" class="absolute top-4 right-4 bg-black bg-opacity-70 rounded-lg px-3 py-1 text-white text-sm opacity-80 hover:opacity-100 transition-opacity">
             1 / 22
+        </div>
+
+        <div id="presentation-controls" class="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-70 rounded-lg px-4 py-2 text-white text-sm opacity-0 hover:opacity-100 transition-opacity duration-300">
+            Press <kbd class="bg-gray-700 px-2 py-1 rounded">←</kbd> / <kbd class="bg-gray-700 px-2 py-1 rounded">→</kbd> to navigate • <kbd class="bg-gray-700 px-2 py-1 rounded">→</kbd> to navigate • <kbd class="bg-gray-700 px-2 py-1 rounded">Esc</kbd> to exit • <kbd class="bg-gray-700 px-2 py-1 rounded">F11</kbd> for browser fullscreen
         </div>
     </div>
 
