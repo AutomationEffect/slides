@@ -97,6 +97,39 @@
             width: 500px;
         }
         
+        .urgency-callout {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(255, 31, 143, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            width: 500px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            animation: pulse 3s ease-in-out infinite;
+        }
+        
+        .stat-highlight {
+            color: #FF1F8F;
+            font-weight: 700;
+        }
+        
+        .urgency-text {
+            color: #FFD700;
+            font-weight: 600;
+            font-style: italic;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { 
+                border-color: rgba(255, 31, 143, 0.3);
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            }
+            50% { 
+                border-color: rgba(255, 31, 143, 0.6);
+                box-shadow: 0 8px 32px rgba(255, 31, 143, 0.2);
+            }
+        }
+        
         .bottom-border {
             position: absolute;
             bottom: 0;
@@ -116,10 +149,30 @@
         </div>
         
         <!-- Main Content Area -->
-        <div class="flex gap-12 items-center justify-center flex-1">
-            <!-- Chart Section -->
-            <div class="chart-container">
-                <canvas id="trendChart"></canvas>
+        <div class="flex gap-12 items-start justify-center flex-1">
+            <!-- Left Side: Chart + Callout -->
+            <div class="flex flex-col items-center">
+                <!-- Chart Section -->
+                <div class="chart-container mb-6">
+                    <canvas id="trendChart"></canvas>
+                </div>
+                
+                <!-- Urgency Callout Card -->
+                <div class="urgency-callout">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-exclamation-triangle text-2xl text-yellow-500 mr-3"></i>
+                        <h3 class="text-lg font-bold text-white">The Window is Closing</h3>
+                    </div>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        Ad costs have risen <span class="stat-highlight">69% since 2021</span> and continue to climb... 
+                        Organic reach has declined to <span class="stat-highlight">under 2%</span> and keeps falling... 
+                        Meanwhile AI is enhancing cold email response rates to upwards of <span class="stat-highlight">30.5%</span> 
+                        and costs remain stable at <span class="stat-highlight">$0.10 per email</span> or less. 
+                        <br><br>
+                        <span class="urgency-text">Every day you wait, your competitors are emailing your clients... 
+                        which is why you need to act NOW—not next month, not next quarter, but NOW!</span>
+                    </p>
+                </div>
             </div>
             
             <!-- Reality Chips Section -->
