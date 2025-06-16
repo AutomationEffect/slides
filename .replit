@@ -1,4 +1,4 @@
-modules = ["web"]
+modules = ["nodejs-20", "web"]
 run = "npm run dev"
 
 [nix]
@@ -17,4 +17,8 @@ mode = "sequential"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "python3 server.py"
+args = "node server.js"
+
+[[ports]]
+localPort = 5000
+externalPort = 80
