@@ -23,7 +23,7 @@
 </head>
 <body class="bg-gray-800 text-white flex">
 
-    <div class="w-64 bg-gray-900 p-4 overflow-y-auto h-screen slide-nav">
+    <div id="sidebar" class="w-64 bg-gray-900 p-4 overflow-y-auto h-screen slide-nav">
         <h2 class="text-xl font-bold mb-4">Slides</h2>
         <ul id="slide-list" class="space-y-2">
             <!-- Slide links will be injected here -->
@@ -31,16 +31,32 @@
     </div>
 
     <div class="flex-1 flex flex-col items-center justify-center p-4">
-        <div class="mb-4">
+        <div id="controls" class="mb-4">
             <button id="prev-slide" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-l">
                 &larr; Previous
             </button>
             <button id="next-slide" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-r">
                 Next &rarr;
             </button>
+            <button id="presentation-mode" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded ml-4">
+                📺 Presentation Mode
+            </button>
         </div>
         <div id="slide-container" class="bg-gray-900 shadow-2xl">
             <iframe id="slide-frame" class="slide-viewer border-4 border-pink-500 rounded-lg" src=""></iframe>
+        </div>
+    </div>
+
+    <!-- Presentation Mode Overlay -->
+    <div id="presentation-overlay" class="fixed inset-0 bg-black z-50 hidden">
+        <div class="h-full w-full flex items-center justify-center">
+            <iframe id="presentation-frame" class="w-full h-full border-none" src=""></iframe>
+        </div>
+        <div id="presentation-controls" class="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-50 rounded-lg px-4 py-2 text-white text-sm">
+            Press <kbd class="bg-gray-700 px-2 py-1 rounded">←</kbd> / <kbd class="bg-gray-700 px-2 py-1 rounded">→</kbd> to navigate • <kbd class="bg-gray-700 px-2 py-1 rounded">Esc</kbd> to exit
+        </div>
+        <div id="slide-counter" class="absolute top-4 right-4 bg-black bg-opacity-50 rounded-lg px-3 py-1 text-white text-sm">
+            1 / 22
         </div>
     </div>
 
@@ -71,16 +87,24 @@
         ];
 
         let currentSlideIndex = 0;
+        let isPresentationMode = false;
         const slideFrame = document.getElementById('slide-frame');
+        const presentationFrame = document.getElementById('presentation-frame');
         const slideList = document.getElementById('slide-list');
         const prevButton = document.getElementById('prev-slide');
         const nextButton = document.getElementById('next-slide');
+        const presentationButton = document.getElementById('presentation-mode');
+        const presentationOverlay = document.getElementById('presentation-overlay');
+        const slideCounter = document.getElementById('slide-counter');
 
         function loadSlide(index) {
             if (index >= 0 && index < slides.length) {
                 currentSlideIndex = index;
                 const slideName = slides[index];
                 slideFrame.src = slideName;
+                if (isPresentationMode) {
+                    presentationFrame.src = slideName;
+                }
                 updateNav();
             }
         }
@@ -93,6 +117,22 @@
             links[currentSlideIndex].classList.add('active');
             prevButton.disabled = currentSlideIndex === 0;
             nextButton.disabled = currentSlideIndex === slides.length - 1;
+            slideCounter.textContent = `${currentSlideIndex + 1} / ${slides.length}`;
+        }
+
+        function enterPresentationMode() {
+            isPresentationMode = true;
+            presentationOverlay.classList.remove('hidden');
+            presentationFrame.src = slides[currentSlideIndex];
+            document.body.style.overflow = 'hidden';
+            presentationButton.textContent = '📺 Exit Presentation';
+        }
+
+        function exitPresentationMode() {
+            isPresentationMode = false;
+            presentationOverlay.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+            presentationButton.textContent = '📺 Presentation Mode';
         }
 
         slides.forEach((slide, index) => {
@@ -115,6 +155,33 @@
 
         nextButton.addEventListener('click', () => {
             loadSlide(currentSlideIndex + 1);
+        });
+
+        presentationButton.addEventListener('click', () => {
+            if (isPresentationMode) {
+                exitPresentationMode();
+            } else {
+                enterPresentationMode();
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && isPresentationMode) {
+                exitPresentationMode();
+            } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                if (currentSlideIndex > 0) {
+                    loadSlide(currentSlideIndex - 1);
+                }
+            } else if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') {
+                if (currentSlideIndex < slides.length - 1) {
+                    loadSlide(currentSlideIndex + 1);
+                }
+            } else if (e.key === 'f' || e.key === 'F') {
+                if (!isPresentationMode) {
+                    enterPresentationMode();
+                }
+            }
         });
 
         // Load the first slide initially
